@@ -1,172 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>David Reina — Engineering Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --surface2: #181818;
-    --border: #222222;
-    --accent: #e8d5a3;
-    --accent2: #c4a882;
-    --accent-glow: rgba(232,213,163,0.12);
-    --text: #f0ece4;
-    --text-dim: #7a7570;
-    --text-mid: #b0aa9f;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; font-size: 14px; line-height: 1.7; overflow-x: hidden; cursor: none; }
-  #cursor { position: fixed; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width 0.2s, height 0.2s; mix-blend-mode: difference; }
-  #cursor.expand { width: 40px; height: 40px; background: rgba(232,213,163,0.3); }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(10,10,10,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 0.08em; color: var(--accent); text-decoration: none; cursor: none; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.2s; cursor: none; }
-  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-  .page { display: none; min-height: 100vh; padding-top: 72px; }
-  .page.active { display: block; }
-  /* COVER */
-  #page-cover { display: none; position: relative; min-height: 100vh; overflow: hidden; align-items: center; justify-content: center; }
-  #page-cover.active { display: flex; }
-  .cover-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(232,213,163,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(232,213,163,0.04) 1px, transparent 1px); background-size: 60px 60px; }
-  .cover-orb { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(232,213,163,0.06) 0%, transparent 70%); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: orb-pulse 6s ease-in-out infinite; }
-  @keyframes orb-pulse { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:.6; } 50% { transform:translate(-50%,-50%) scale(1.15); opacity:1; } }
-  .cover-content { position: relative; z-index: 2; text-align: center; max-width: 900px; padding: 0 48px; }
-  .cover-eyebrow { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; opacity: 0; animation: fade-up 0.8s 0.2s forwards; }
-  .cover-name { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(56px, 9vw, 120px); line-height: 0.95; letter-spacing: -0.03em; color: var(--text); margin-bottom: 24px; opacity: 0; animation: fade-up 0.8s 0.4s forwards; }
-  .cover-name span { color: var(--accent); font-style: italic; font-family: 'Instrument Serif', serif; }
-  .cover-subtitle { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px; color: var(--text-mid); margin-bottom: 48px; opacity: 0; animation: fade-up 0.8s 0.6s forwards; }
-  .cover-divider { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); margin: 0 auto 48px; opacity: 0; animation: fade-up 0.8s 0.8s forwards; }
-  .cover-tagline { font-size: 12px; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 56px; opacity: 0; animation: fade-up 0.8s 1s forwards; }
-  .cover-cta { display: inline-flex; gap: 16px; opacity: 0; animation: fade-up 0.8s 1.2s forwards; }
-  .btn { padding: 12px 28px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; border: none; cursor: none; transition: all 0.25s; text-decoration: none; display: inline-block; }
-  .btn-primary { background: var(--accent); color: var(--bg); }
-  .btn-primary:hover { background: var(--text); transform: translateY(-2px); }
-  .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--border); }
-  .btn-outline:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .corner-deco { position: absolute; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; opacity: 0.5; line-height: 1.6; }
-  .corner-deco.tl { top: 90px; left: 48px; }
-  .corner-deco.tr { top: 90px; right: 48px; text-align: right; }
-  .corner-deco.bl { bottom: 40px; left: 48px; }
-  .corner-deco.br { bottom: 40px; right: 48px; text-align: right; }
-  .cover-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text-dim); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0; animation: fade-up 1s 1.6s forwards; }
-  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--text-dim), transparent); animation: sl 2s ease-in-out infinite; }
-  @keyframes sl { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:.3;transform:scaleY(.5)} }
-  @keyframes fade-up { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-  /* PAGES */
-  .page-inner { max-width: 1100px; margin: 0 auto; padding: 80px 48px; }
-  .section-tag { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-  .section-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(36px,6vw,72px); line-height: 1; letter-spacing: -0.02em; margin-bottom: 48px; }
-  .italic-accent { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 72px; align-items: start; margin-bottom: 72px; }
-  .portrait-box { width: 100%; aspect-ratio: 3/4; background: var(--surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; color: var(--text-dim); font-size: 11px; letter-spacing: 0.1em; position: relative; overflow: hidden; }
-  .portrait-box::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(232,213,163,.03) 0%,transparent 60%); }
-  .pc { position: absolute; width: 20px; height: 20px; border-color: var(--accent); border-style: solid; border-width: 0; opacity: 0.6; }
-  .pc.tl{top:-1px;left:-1px;border-top-width:2px;border-left-width:2px}
-  .pc.tr{top:-1px;right:-1px;border-top-width:2px;border-right-width:2px}
-  .pc.bl{bottom:-1px;left:-1px;border-bottom-width:2px;border-left-width:2px}
-  .pc.br{bottom:-1px;right:-1px;border-bottom-width:2px;border-right-width:2px}
-  .flag-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); padding: 6px 14px; font-size: 11px; color: var(--text-mid); margin-bottom: 24px; }
-  .lead { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 20px; color: var(--text); line-height: 1.5; margin-bottom: 28px; }
-  .about-bio p { color: var(--text-mid); margin-bottom: 20px; font-size: 13px; line-height: 1.9; }
-  .about-bio strong { color: var(--text); font-weight: 400; }
-  .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 64px; }
-  .stat-item { background: var(--bg); padding: 28px 24px; text-align: center; }
-  .stat-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 36px; color: var(--accent); line-height: 1; margin-bottom: 8px; }
-  .stat-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); }
-  .skills-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 48px; margin-bottom: 64px; }
-  .skill-cat h3 { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-  .skill-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(34,34,34,.5); font-size: 12px; color: var(--text-mid); }
-  .sbar { width: 80px; height: 2px; background: var(--border); position: relative; overflow: hidden; }
-  .sbar-fill { position: absolute; left:0; top:0; height:100%; background: var(--accent); transform-origin:left; }
-  .edu-block { border: 1px solid var(--border); padding: 32px; position: relative; background: var(--surface); }
-  .edu-block::before { content:'EDUCATION'; position:absolute; top:-6px; left:24px; background:var(--surface); padding:0 8px; font-size:9px; letter-spacing:.3em; color:var(--accent); text-transform:uppercase; }
-  .edu-item { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--border); }
-  .edu-item:last-child { border-bottom: none; }
-  .edu-school { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: var(--text); }
-  .edu-detail { font-size: 12px; color: var(--text-dim); }
-  .edu-year { font-size: 11px; color: var(--accent); white-space: nowrap; }
-  /* PROJECTS */
-  #page-projects .page-inner { max-width: 1200px; }
-  .proj-intro { max-width: 600px; margin-bottom: 64px; }
-  .proj-intro p { color: var(--text-mid); font-size: 13px; margin-top: 16px; line-height: 1.9; }
-  .proj-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-  .pcard { background: var(--bg); padding: 36px 28px; cursor: none; transition: background .25s; position: relative; overflow: hidden; }
-  .pcard::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,var(--accent-glow),transparent); opacity:0; transition:opacity .3s; }
-  .pcard:hover { background: var(--surface); }
-  .pcard:hover::before { opacity: 1; }
-  .pcard:hover .pnum { color: var(--accent); opacity: .3; }
-  .pnum { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: var(--border); line-height: 1; margin-bottom: 20px; transition: color .3s; }
-  .ptag { font-size: 9px; letter-spacing: .25em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-  .ptitle { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; color: var(--text); margin-bottom: 12px; line-height: 1.3; }
-  .pdesc { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin-bottom: 24px; }
-  .plink { font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: gap .2s; cursor: none; }
-  .plink:hover { gap: 14px; }
-  .plink::after { content: '→'; }
-  .pcard.featured { grid-column: span 2; background: var(--surface); border-left: 3px solid var(--accent); }
-  .pcard.featured .ptitle { font-size: 22px; }
-  /* DETAIL */
-  #page-project-detail { padding: 100px 0 80px; }
-  .det-hero { padding: 80px 48px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; max-width: 1200px; margin: 0 auto; }
-  .det-hero::after { content:''; position:absolute; top:0; right:0; width:40%; height:100%; background:linear-gradient(to left,var(--accent-glow),transparent); pointer-events:none; }
-  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-dim); cursor: none; transition: color .2s; margin-bottom: 24px; }
-  .back-link::before { content: '←'; }
-  .back-link:hover { color: var(--accent); }
-  .det-badge { display: inline-block; background: var(--surface); border: 1px solid var(--border); padding: 4px 12px; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-  .det-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(28px,4.5vw,58px); line-height: 1.05; letter-spacing: -0.02em; max-width: 720px; margin-bottom: 20px; }
-  .det-sub { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 17px; color: var(--text-mid); max-width: 600px; margin-bottom: 40px; }
-  .meta-row { display: flex; gap: 40px; flex-wrap: wrap; }
-  .mi { display: flex; flex-direction: column; gap: 4px; }
-  .ml { font-size: 9px; letter-spacing: .25em; text-transform: uppercase; color: var(--text-dim); }
-  .mv { font-size: 13px; color: var(--text); }
-  .dbody { max-width: 800px; margin: 0 auto; padding: 72px 48px; }
-  .dbody h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.01em; color: var(--text); margin: 56px 0 20px; padding-top: 48px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 16px; }
-  .dbody h2::before { content: attr(data-n); font-size: 11px; letter-spacing: .15em; color: var(--accent); font-weight: 400; }
-  .dbody p { color: var(--text-mid); font-size: 13px; line-height: 2; margin-bottom: 18px; }
-  .dbody strong { color: var(--text); font-weight: 400; }
-  .dbody ul { list-style: none; margin: 16px 0 24px; }
-  .dbody ul li { color: var(--text-mid); font-size: 12px; padding: 6px 0 6px 20px; position: relative; line-height: 1.8; }
-  .dbody ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
-  .callout { border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 24px 28px; margin: 32px 0; background: var(--surface); }
-  .callout p { color: var(--text); font-family: 'Instrument Serif', serif; font-style: italic; font-size: 16px; line-height: 1.7; margin: 0; }
-  .scard { border: 1px solid var(--border); padding: 24px; margin: 12px 0; background: var(--surface); display: grid; grid-template-columns: 70px 1fr; gap: 20px; align-items: start; transition: border-color .2s; }
-  .scard:hover { border-color: var(--accent); }
-  .sbadge { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 30px; color: var(--accent); opacity: .5; line-height: 1; }
-  .stitle { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 6px; }
-  .sdesc { font-size: 12px; color: var(--text-dim); line-height: 1.8; }
-  .tline { position: relative; padding-left: 32px; margin: 24px 0; }
-  .tline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom,var(--accent),var(--border)); }
-  .titem { position: relative; margin-bottom: 24px; }
-  .titem::before { content:''; position:absolute; left:-36px; top:6px; width:8px; height:8px; border:1px solid var(--accent); background:var(--bg); transform:rotate(45deg); }
-  .tphase { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-  .ttext { font-size: 12px; color: var(--text-mid); line-height: 1.8; }
-  footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; color: var(--text-dim); font-size: 11px; }
-  ::selection { background: var(--accent); color: var(--bg); }
-  ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--border)} ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
-  @media(max-width:768px){
-    nav{padding:16px 24px}
-    .page-inner{padding:60px 24px}
-    .about-grid{grid-template-columns:1fr;gap:40px}
-    .stats-row{grid-template-columns:repeat(2,1fr)}
-    .skills-grid{grid-template-columns:1fr}
-    .proj-grid{grid-template-columns:1fr}
-    .pcard.featured{grid-column:span 1}
-    .det-hero{padding:60px 24px}
-    .dbody{padding:48px 24px}
-    footer{flex-direction:column;gap:12px;text-align:center}
-    .cover-name{font-size:48px}
-    .corner-deco{display:none}
-    .nav-links{gap:16px}
-  }
-</style>
-</head>
 <body>
 <div id="cursor"></div>
 
@@ -208,16 +39,14 @@
       <div>
         <div class="portrait-box">
           <div class="pc tl"></div><div class="pc tr"></div><div class="pc bl"></div><div class="pc br"></div>
-          <div style="font-size:48px;opacity:.15">◎</div>
-          <div style="text-transform:uppercase;letter-spacing:.2em;font-size:11px">Photo coming soon</div>
+          <img src="me.jpg" alt="David Reina" style="width:100%; height:100%; object-fit:cover;">
         </div>
       </div>
       <div class="about-bio">
         <div class="flag-chip">🇭🇳 Honduras &nbsp;·&nbsp; Bethesda, MD</div>
         <p class="lead">"I build things that haven't been built yet — from prosthetic hands to spacecraft that return from Mars."</p>
-        <p>My name is <strong>David Reina</strong>, a student at <strong>Walt Whitman High School</strong> in Bethesda, Maryland. Originally from <strong>Honduras</strong>, I carry a perspective shaped by two worlds — and a drive to engineer solutions that matter across both of them.</p>
-        <p>In the summer of 2025 I attended the <strong>Rice Aerospace Academy</strong> at Rice University, where my team designed a conceptual <strong>5-stage Mars Sample Return Lander</strong> — one of the most ambitious challenges in modern space exploration.</p>
-        <p>My work spans 3D modeling, CAD design, and propulsion analysis. I've also competed internationally — representing Honduras at a <strong>Shanghai sustainable city design camp</strong> with students from 10+ countries.</p>
+        <p>My name is <strong>David Reina</strong>, a student at <strong>Walt Whitman High School</strong>. Originally from <strong>Honduras</strong>, I carry a perspective shaped by two worlds — and a drive to engineer solutions that matter.</p>
+        <p>In 2025 I attended the <strong>Rice Aerospace Academy</strong>, designing a conceptual 5-stage Mars Lander. My work spans 3D modeling, propulsion analysis, and international sustainable design.</p>
       </div>
     </div>
 
@@ -227,32 +56,6 @@
       <div class="stat-item"><div class="stat-num">2025</div><div class="stat-label">Rice Aerospace Academy</div></div>
       <div class="stat-item"><div class="stat-num">🇭🇳</div><div class="stat-label">Honduras</div></div>
     </div>
-
-    <div class="skills-grid">
-      <div class="skill-cat">
-        <h3>Engineering Tools</h3>
-        <div class="skill-row">Onshape / GrabCAD <div class="sbar"><div class="sbar-fill" style="width:85%"></div></div></div>
-        <div class="skill-row">3D Printing <div class="sbar"><div class="sbar-fill" style="width:80%"></div></div></div>
-        <div class="skill-row">Technical Sketching <div class="sbar"><div class="sbar-fill" style="width:90%"></div></div></div>
-      </div>
-      <div class="skill-cat">
-        <h3>Domains</h3>
-        <div class="skill-row">Aerospace Systems <div class="sbar"><div class="sbar-fill" style="width:82%"></div></div></div>
-        <div class="skill-row">Prosthetics Design <div class="sbar"><div class="sbar-fill" style="width:72%"></div></div></div>
-        <div class="skill-row">Sustainable Design <div class="sbar"><div class="sbar-fill" style="width:68%"></div></div></div>
-      </div>
-    </div>
-
-    <div class="edu-block">
-      <div class="edu-item">
-        <div><div class="edu-school">Walt Whitman High School</div><div class="edu-detail">Bethesda, Maryland</div></div>
-        <div class="edu-year">Present</div>
-      </div>
-      <div class="edu-item">
-        <div><div class="edu-school">Rice Aerospace Academy</div><div class="edu-detail">Rice University, Houston TX</div></div>
-        <div class="edu-year">Summer 2025</div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -261,29 +64,21 @@
     <div class="proj-intro">
       <div class="section-tag">02 — Projects</div>
       <h1 class="section-title">Selected<br><span class="italic-accent">Engineering Work</span></h1>
-      <p>Five projects across aerospace, biomedical design, and sustainable development — each built under real constraints with real results.</p>
     </div>
     <div class="proj-grid">
       <div class="pcard featured" onclick="showDetail('msrl')">
         <div class="pnum">01</div>
-        <div class="ptag">Aerospace · Mission Design · CAD · Team</div>
+        <div class="ptag">Aerospace · CAD · Team</div>
         <div class="ptitle">Rice C-ARK — Mars Sample Return Lander</div>
-        <div class="pdesc">A conceptual 5-stage multi-mission system for collecting Martian geological samples and returning them to Earth. Designed at Rice Aerospace Academy.</div>
+        <div class="pdesc">A conceptual 5-stage multi-mission system designed at Rice Aerospace Academy.</div>
         <a class="plink" href="#" onclick="showDetail('msrl');return false;">Read Full Report</a>
       </div>
       <div class="pcard" onclick="showDetail('poe')">
         <div class="pnum">02</div>
-        <div class="ptag">Biomedical · 3D Print · POE</div>
+        <div class="ptag">Biomedical · 3D Print</div>
         <div class="ptitle">POE Prosthetic Hand</div>
-        <div class="pdesc">Modeled and 3D printed a prosthetic device with functional articulating fingers.</div>
+        <div class="pdesc">Functional articulating fingers engineered for grip.</div>
         <a class="plink" href="#" onclick="showDetail('poe');return false;">Read Report</a>
-      </div>
-      <div class="pcard" onclick="showDetail('rocket')">
-        <div class="pnum">03</div>
-        <div class="ptag">Aerospace · Budget Lab · Rice</div>
-        <div class="ptitle">Water Pressure Rocket</div>
-        <div class="pdesc">Designed and built a water-pressure rocket under a simulated economic system.</div>
-        <a class="plink" href="#" onclick="showDetail('rocket');return false;">Read Report</a>
       </div>
     </div>
   </div>
@@ -295,93 +90,55 @@
 
 <footer>
   <span>© 2026 David Reina</span>
-  <span style="color:var(--border)">———</span>
-  <span>Walt Whitman High School · Rice Aerospace Academy · 🇭🇳 Honduras</span>
+  <span>Walt Whitman High School · 🇭🇳 Honduras</span>
 </footer>
 
 <script id="tpl-msrl" type="text/x-template">
 <div class="det-hero">
   <div class="back-link" onclick="showPage('projects')">Back to Projects</div>
-  <div class="det-badge">RAA S2 2025</div>
-  <h1 class="det-title">Conceptual Design for a Multi-Stage Mars Lander</h1>
-  <p class="det-sub">Rice C-ARK — a 5-stage system to reach Mars and return samples.</p>
-  <div class="meta-row">
-    <div class="mi"><span class="ml">Program</span><span class="mv">Rice Aerospace Academy</span></div>
-    <div class="mi"><span class="ml">Date</span><span class="mv">July 2025</span></div>
-    <div class="mi"><span class="ml">Tools</span><span class="mv">Onshape · GrabCAD</span></div>
-  </div>
+  <div class="det-badge">RAA 2025</div>
+  <h1 class="det-title">Mars Sample Return Lander</h1>
 </div>
 <div class="dbody">
-  <h2 data-n="00">Abstract</h2>
-  <p>A conceptual design for the Mars Sample Recovery Lander, purpose-built to collect volcanic dust, rock, and ice. The architecture utilizes 5 distinct stages to manage the long-duration mission.</p>
-  <h2 data-n="01">System Architecture</h2>
-  <div class="scard"><div class="sbadge">S1</div><div><div class="stitle">Lander Core</div><div class="sdesc">Houses sample pods and return electronics.</div></div></div>
-  <div class="scard"><div class="sbadge">S2</div><div><div class="stitle">Ascent Engine</div><div class="sdesc">Provides the thrust needed to exit Martian gravity.</div></div></div>
+  <h2 data-n="00">Technical Visualization</h2>
+  <img src="mars-lander.jpg" alt="Mars Lander CAD" style="width:100%; border:1px solid var(--border); margin:20px 0;">
+  <p>This architecture addresses the gap in current Mars exploration: the ability to return samples to Earth. The 5-stage design ensures enough delta-v for Mars ascent and orbital rendezvous.</p>
 </div>
 </script>
 
 <script id="tpl-poe" type="text/x-template">
 <div class="det-hero">
   <div class="back-link" onclick="showPage('projects')">Back to Projects</div>
-  <div class="det-badge">Biomedical Design</div>
+  <div class="det-badge">Biomedical</div>
   <h1 class="det-title">POE Prosthetic Hand</h1>
-  <p class="det-sub">A low-cost, 3D printed solution for upper limb mobility.</p>
 </div>
 <div class="dbody">
-  <h2 data-n="01">Design Overview</h2>
-  <p>This project focused on the articulation of the fingers. By using 3D printing, we can rapidly iterate designs to improve grip strength and comfort.</p>
-</div>
-</script>
-
-<script id="tpl-rocket" type="text/x-template">
-<div class="det-hero">
-  <div class="back-link" onclick="showPage('projects')">Back to Projects</div>
-  <div class="det-badge">Aerodynamics</div>
-  <h1 class="det-title">Water Pressure Rocket</h1>
-  <p class="det-sub">Optimizing performance within strict budget constraints.</p>
-</div>
-<div class="dbody">
-  <h2 data-n="01">The Challenge</h2>
-  <p>The project simulated a real engineering environment where every part—the nose cone, the fins, the pressure vessel—had a financial cost.</p>
+  <h2 data-n="00">Prototyping</h2>
+  <img src="prosthetic.jpg" alt="Prosthetic Prototype" style="width:100%; border:1px solid var(--border); margin:20px 0;">
+  <p>The POE hand uses a mechanical tension system. Each finger is printed with internal channels for "tendon" lines, allowing for a natural grip motion.</p>
 </div>
 </script>
 
 <script>
+  // (Include the same JavaScript as before for cursor and page switching)
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', (e) => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   });
-
   document.querySelectorAll('a, .btn, .pcard, .back-link').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
   });
-
   function showPage(pageId) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    const target = document.getElementById('page-' + pageId);
-    if(target) target.classList.add('active');
-
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-    const navLink = document.getElementById('nav-' + pageId);
-    if(navLink) navLink.classList.add('active');
-    
+    document.getElementById('page-' + pageId).classList.add('active');
     window.scrollTo(0, 0);
   }
-
   function showDetail(projectId) {
     const template = document.getElementById('tpl-' + projectId);
-    const detailContent = document.getElementById('det-content');
-    if(template) {
-      detailContent.innerHTML = template.innerHTML;
-      showPage('project-detail');
-    }
+    document.getElementById('det-content').innerHTML = template.innerHTML;
+    showPage('project-detail');
   }
-
-  // Handle the "Home" logo click
-  document.querySelector('.nav-logo').addEventListener('click', () => showPage('cover'));
 </script>
 </body>
-</html>
- 
