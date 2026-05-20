@@ -85,8 +85,7 @@
   .skill-cat h3 { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
   .skill-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(34,34,34,.5); font-size: 12px; color: var(--text-mid); }
   .sbar { width: 80px; height: 2px; background: var(--border); position: relative; overflow: hidden; }
-  .sbar-fill { position: absolute; left:0; top:0; height:100%; background: var(--accent); transform-origin:left; animation: bfill 1.5s ease-out forwards; }
-  @keyframes bfill { from{transform:scaleX(0)} to{transform:scaleX(1)} }
+  .sbar-fill { position: absolute; left:0; top:0; height:100%; background: var(--accent); transform-origin:left; }
   .edu-block { border: 1px solid var(--border); padding: 32px; position: relative; background: var(--surface); }
   .edu-block::before { content:'EDUCATION'; position:absolute; top:-6px; left:24px; background:var(--surface); padding:0 8px; font-size:9px; letter-spacing:.3em; color:var(--accent); text-transform:uppercase; }
   .edu-item { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--border); }
@@ -148,16 +147,6 @@
   .titem::before { content:''; position:absolute; left:-36px; top:6px; width:8px; height:8px; border:1px solid var(--accent); background:var(--bg); transform:rotate(45deg); }
   .tphase { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
   .ttext { font-size: 12px; color: var(--text-mid); line-height: 1.8; }
-  .spec-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 12px; }
-  .spec-table th { text-align: left; padding: 10px 16px; background: var(--surface2); color: var(--accent); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; font-weight: 400; border-bottom: 1px solid var(--border); }
-  .spec-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: var(--text-mid); }
-  .spec-table tr:hover td { background: var(--surface); color: var(--text); }
-  .refs { border-top: 1px solid var(--border); padding-top: 48px; margin-top: 48px; }
-  .refs h3 { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-  .ref { font-size: 11px; color: var(--text-dim); padding: 8px 0; border-bottom: 1px solid rgba(34,34,34,.5); line-height: 1.7; }
-  .det-footer { display:flex; align-items:center; justify-content:space-between; margin-top:48px; padding-top:32px; border-top:1px solid var(--border); }
-  .det-footer-left { font-size: 11px; color: var(--text-dim); }
-  .det-footer-left span { display: block; color: var(--text-mid); margin-top: 4px; }
   footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; color: var(--text-dim); font-size: 11px; }
   ::selection { background: var(--accent); color: var(--bg); }
   ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--border)} ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
@@ -190,7 +179,6 @@
   </ul>
 </nav>
 
-<!-- COVER -->
 <div id="page-cover" class="page active">
   <div class="cover-grid"></div>
   <div class="cover-orb"></div>
@@ -212,7 +200,6 @@
   <div class="cover-scroll"><div class="scroll-line"></div>Explore</div>
 </div>
 
-<!-- ABOUT -->
 <div id="page-about" class="page">
   <div class="page-inner">
     <div class="section-tag">01 — About</div>
@@ -229,9 +216,8 @@
         <div class="flag-chip">🇭🇳 Honduras &nbsp;·&nbsp; Bethesda, MD</div>
         <p class="lead">"I build things that haven't been built yet — from prosthetic hands to spacecraft that return from Mars."</p>
         <p>My name is <strong>David Reina</strong>, a student at <strong>Walt Whitman High School</strong> in Bethesda, Maryland. Originally from <strong>Honduras</strong>, I carry a perspective shaped by two worlds — and a drive to engineer solutions that matter across both of them.</p>
-        <p>In the summer of 2025 I attended the <strong>Rice Aerospace Academy (Envision by WorldStrides)</strong> at Rice University, where my team designed a conceptual <strong>5-stage Mars Sample Return Lander</strong> — one of the most ambitious challenges in modern space exploration.</p>
-        <p>My work spans 3D modeling and printing, CAD design, mission architecture, propulsion analysis, and hands-on fabrication with materials like balsa wood and prosthetic components. I've also competed internationally — representing Honduras at a <strong>Shanghai sustainable city design camp</strong> with students from 10+ countries.</p>
-        <p>I approach every project by grounding ideas in real physics and real constraints — budget, materials, and time — then iterating until the design actually works. That discipline, and a deep curiosity about how things fly, drives everything I build.</p>
+        <p>In the summer of 2025 I attended the <strong>Rice Aerospace Academy</strong> at Rice University, where my team designed a conceptual <strong>5-stage Mars Sample Return Lander</strong> — one of the most ambitious challenges in modern space exploration.</p>
+        <p>My work spans 3D modeling, CAD design, and propulsion analysis. I've also competed internationally — representing Honduras at a <strong>Shanghai sustainable city design camp</strong> with students from 10+ countries.</p>
       </div>
     </div>
 
@@ -247,14 +233,12 @@
         <h3>Engineering Tools</h3>
         <div class="skill-row">Onshape / GrabCAD <div class="sbar"><div class="sbar-fill" style="width:85%"></div></div></div>
         <div class="skill-row">3D Printing <div class="sbar"><div class="sbar-fill" style="width:80%"></div></div></div>
-        <div class="skill-row">Plane Maker / Sim <div class="sbar"><div class="sbar-fill" style="width:70%"></div></div></div>
         <div class="skill-row">Technical Sketching <div class="sbar"><div class="sbar-fill" style="width:90%"></div></div></div>
       </div>
       <div class="skill-cat">
         <h3>Domains</h3>
         <div class="skill-row">Aerospace Systems <div class="sbar"><div class="sbar-fill" style="width:82%"></div></div></div>
         <div class="skill-row">Prosthetics Design <div class="sbar"><div class="sbar-fill" style="width:72%"></div></div></div>
-        <div class="skill-row">Budget Engineering <div class="sbar"><div class="sbar-fill" style="width:78%"></div></div></div>
         <div class="skill-row">Sustainable Design <div class="sbar"><div class="sbar-fill" style="width:68%"></div></div></div>
       </div>
     </div>
@@ -265,66 +249,46 @@
         <div class="edu-year">Present</div>
       </div>
       <div class="edu-item">
-        <div><div class="edu-school">Rice Aerospace Academy</div><div class="edu-detail">Envision by WorldStrides · Rice University, Houston TX</div></div>
+        <div><div class="edu-school">Rice Aerospace Academy</div><div class="edu-detail">Rice University, Houston TX</div></div>
         <div class="edu-year">Summer 2025</div>
-      </div>
-      <div class="edu-item">
-        <div><div class="edu-school">Shanghai International Sustainability Camp</div><div class="edu-detail">Representing Honduras · 10+ participating countries</div></div>
-        <div class="edu-year">2025</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PROJECTS -->
 <div id="page-projects" class="page">
   <div class="page-inner" style="max-width:1200px">
     <div class="proj-intro">
       <div class="section-tag">02 — Projects</div>
       <h1 class="section-title">Selected<br><span class="italic-accent">Engineering Work</span></h1>
-      <p>Five projects across aerospace, biomedical design, sustainable development, and precision fabrication — each built under real constraints with real results.</p>
+      <p>Five projects across aerospace, biomedical design, and sustainable development — each built under real constraints with real results.</p>
     </div>
     <div class="proj-grid">
       <div class="pcard featured" onclick="showDetail('msrl')">
         <div class="pnum">01</div>
         <div class="ptag">Aerospace · Mission Design · CAD · Team</div>
         <div class="ptitle">Rice C-ARK — Mars Sample Return Lander</div>
-        <div class="pdesc">A conceptual 5-stage multi-mission system for collecting Martian geological samples — volcanic dust, rock, and ice — and returning them to Earth. Reusable booster, ion propulsion for deep space, lander and orbital satellite. Designed at Rice Aerospace Academy with budget, mission length, and materials factored through multiple collaborative iterations.</div>
+        <div class="pdesc">A conceptual 5-stage multi-mission system for collecting Martian geological samples and returning them to Earth. Designed at Rice Aerospace Academy.</div>
         <a class="plink" href="#" onclick="showDetail('msrl');return false;">Read Full Report</a>
       </div>
       <div class="pcard" onclick="showDetail('poe')">
         <div class="pnum">02</div>
         <div class="ptag">Biomedical · 3D Print · POE</div>
         <div class="ptitle">POE Prosthetic Hand</div>
-        <div class="pdesc">Modeled and 3D printed a prosthetic device with functional articulating fingers — engineered for smooth movement and a strong grip.</div>
+        <div class="pdesc">Modeled and 3D printed a prosthetic device with functional articulating fingers.</div>
         <a class="plink" href="#" onclick="showDetail('poe');return false;">Read Report</a>
       </div>
       <div class="pcard" onclick="showDetail('rocket')">
         <div class="pnum">03</div>
         <div class="ptag">Aerospace · Budget Lab · Rice</div>
-        <div class="ptitle">Water Pressure Rocket &amp; Budget Lab</div>
-        <div class="pdesc">Designed and built a water-pressure rocket under a simulated economic system — tracking expenditures and remaining within budget while optimizing performance.</div>
+        <div class="ptitle">Water Pressure Rocket</div>
+        <div class="pdesc">Designed and built a water-pressure rocket under a simulated economic system.</div>
         <a class="plink" href="#" onclick="showDetail('rocket');return false;">Read Report</a>
-      </div>
-      <div class="pcard" onclick="showDetail('balsa')">
-        <div class="pnum">04</div>
-        <div class="ptag">Aerospace · Fabrication · Simulation</div>
-        <div class="ptitle">Aerospace Balsa Wood Plane</div>
-        <div class="pdesc">Used plane-maker simulation software to calculate ideal scale and aerodynamic shape, then built the aircraft from balsa wood to precise measurements.</div>
-        <a class="plink" href="#" onclick="showDetail('balsa');return false;">Read Report</a>
-      </div>
-      <div class="pcard" onclick="showDetail('shanghai')">
-        <div class="pnum">05</div>
-        <div class="ptag">Sustainable Design · International · Honduras</div>
-        <div class="ptitle">Shanghai Sustainable City — Honduras</div>
-        <div class="pdesc">Represented Honduras at an international high school design camp with 10+ countries. Built a sustainable city model with renewable energy and cleaner transportation.</div>
-        <a class="plink" href="#" onclick="showDetail('shanghai');return false;">Read Report</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- DETAIL PAGE -->
 <div id="page-project-detail" class="page">
   <div id="det-content"></div>
 </div>
@@ -332,274 +296,91 @@
 <footer>
   <span>© 2026 David Reina</span>
   <span style="color:var(--border)">———</span>
-  <span>Walt Whitman High School · Rice Aerospace Academy 2025 · 🇭🇳 Honduras</span>
+  <span>Walt Whitman High School · Rice Aerospace Academy · 🇭🇳 Honduras</span>
 </footer>
 
-<!-- TEMPLATES -->
 <script id="tpl-msrl" type="text/x-template">
 <div class="det-hero">
   <div class="back-link" onclick="showPage('projects')">Back to Projects</div>
   <div class="det-badge">RAA S2 2025</div>
-  <h1 class="det-title">Conceptual Design for a Multi-Stage Mars Lander and Sample Return Mission</h1>
-  <p class="det-sub">Rice C-ARK — a 5-stage system to reach Mars, collect geological samples, and return them to Earth.</p>
+  <h1 class="det-title">Conceptual Design for a Multi-Stage Mars Lander</h1>
+  <p class="det-sub">Rice C-ARK — a 5-stage system to reach Mars and return samples.</p>
   <div class="meta-row">
     <div class="mi"><span class="ml">Program</span><span class="mv">Rice Aerospace Academy</span></div>
     <div class="mi"><span class="ml">Date</span><span class="mv">July 2025</span></div>
-    <div class="mi"><span class="ml">Tools</span><span class="mv">Onshape · GrabCAD · NASA Data</span></div>
-    <div class="mi"><span class="ml">Team</span><span class="mv">5 Members</span></div>
+    <div class="mi"><span class="ml">Tools</span><span class="mv">Onshape · GrabCAD</span></div>
   </div>
 </div>
 <div class="dbody">
   <h2 data-n="00">Abstract</h2>
-  <div class="callout"><p>A conceptual design for the Mars Sample Recovery Lander (MSRL-A), purpose-built to collect volcanic dust, rock, and ice from the Martian surface and return them to Earth — the first mission architecture designed with full return functionality.</p></div>
-  <p>Inspired by NASA's Perseverance, Ingenuity, and InSight missions, this system uses a 5-stage launch architecture. A companion drone unit, MSRL-B, conducts on-surface sample collection over a multi-month operational phase. Budget, mission length, and material constraints were factored through multiple rounds of collaborative design iteration.</p>
-
-  <h2 data-n="01">Introduction &amp; Background</h2>
-  <p>Previous Mars missions — Perseverance, Ingenuity, InSight, Curiosity — were all successful, but none were designed to <strong>return</strong>. This project addresses that gap directly. Bringing physical Martian samples back to Earth enables detailed geological analysis and could reveal evidence of past or present microbial life in Martian permafrost ice.</p>
-  <p>Strong indicators that Mars once had enough surface water to support life make a sample return mission both scientifically critical and socially compelling.</p>
-
-  <h2 data-n="02">Mission Timeline</h2>
-  <div class="tline">
-    <div class="titem"><div class="tphase">Phase 1 — Earth Launch</div><div class="ttext">5-stage rocket launches. Stage 5 propels the stack out of Earth's atmosphere, detaches, and returns for reuse. Stage 4 ion propulsion activates for Mars transit.</div></div>
-    <div class="titem"><div class="tphase">Phase 2 — Mars Orbital Insertion</div><div class="ttext">Stages 1–3 (lander) detach from Stage 4. Stage 4 remains in Martian orbit as communications satellite and energy hub for the return journey.</div></div>
-    <div class="titem"><div class="tphase">Phase 3 — Entry, Descent &amp; Landing</div><div class="ttext">Heat shield protects during entry. Parachute deploys from Stage 1 top. Retro-thrusters on Stage 3 control final descent. Drills anchor the lander to the surface.</div></div>
-    <div class="titem"><div class="tphase">Phase 4 — Surface Operations (4–6 months)</div><div class="ttext">After system checks, MSRL-B drone deploys to collect volcanic dust, rock, and ice — depositing samples into secured pods within the lander.</div></div>
-    <div class="titem"><div class="tphase">Phase 5 — Mars Ascent &amp; Rendezvous</div><div class="ttext">MSRL-A launches. Stage 3 detaches, Stage 2 takes over. Stage 1 uses ion propulsion to dock with Stage 4 in orbit.</div></div>
-    <div class="titem"><div class="tphase">Phase 6 — Earth Return</div><div class="ttext">Stage 1 + Stage 4 transit back to Earth. An EVA mission recovers the Martian samples in Earth orbit.</div></div>
-  </div>
-
-  <h2 data-n="03">5-Stage Architecture</h2>
-  <div class="scard"><div class="sbadge">S1</div><div><div class="stitle">Lander Core + Drone Housing</div><div class="sdesc">Houses MSRL-B drone and sample pods. Ion propulsion for post-ascent orbital re-alignment. Re-attachment hatch for Stage 4 docking. This is the stage that returns to Earth with samples.</div></div></div>
-  <div class="scard"><div class="sbadge">S2</div><div><div class="stitle">Mars Ascent Engine Stage</div><div class="sdesc">Raptor 3 liquid-fuel engines provide Mars ascent thrust. Deployable solar panels activate at designated mission phases.</div></div></div>
-  <div class="scard"><div class="sbadge">S3</div><div><div class="stitle">Descent, Landing &amp; Initial Ascent Stage</div><div class="sdesc">Manages EDL — heat shield, retro-thrusters, landing gear. Uses remaining fuel for initial ascent burn, then detaches.</div></div></div>
-  <div class="scard"><div class="sbadge">S4</div><div><div class="stitle">Orbital Relay &amp; Return Platform</div><div class="sdesc">Ion propulsion for Earth↔Mars transit. Remains in Martian orbit as communications hub. Docks with Stage 1 for the return journey.</div></div></div>
-  <div class="scard"><div class="sbadge">S5</div><div><div class="stitle">Earth Launch Vehicle (Reusable Booster)</div><div class="sdesc">Raptor 3 cluster launches Stages 1–4 from Earth. Designed for recovery and reuse — modeled on SpaceX Super Heavy booster architecture.</div></div></div>
-
-  <h2 data-n="04">Design Iteration &amp; Budget Analysis</h2>
-  <p>The team cycled through multiple design iterations, with each major revision going through structured team discussion. When lift-to-weight ratio challenges arose for Martian ascent, stage architecture was revised against Martian escape velocity data and NASA Mars Fact Sheet parameters — surface gravity 3.72 m/s², atmospheric pressure ~1% of Earth's.</p>
-  <p>Budget feasibility was analyzed against current mission cost benchmarks. Material choices — perovskite solar panels over conventional silicon, Raptor 3 engines for dual-use efficiency — were selected to balance cost and performance. Mission duration was estimated at 18–24 months total, with the 4–6 month surface phase driving the majority of operational cost.</p>
-
-  <h2 data-n="05">MSRL-B Drone Comparison</h2>
-  <table class="spec-table">
-    <thead><tr><th>Parameter</th><th>Ingenuity (NASA)</th><th>MSRL-B (This Mission)</th></tr></thead>
-    <tbody>
-      <tr><td>Surface Area</td><td>~0.14 m²</td><td>~3–4 m² (foldable)</td></tr>
-      <tr><td>Power Source</td><td>Solar + Li-Ion</td><td>Perovskite Solar</td></tr>
-      <tr><td>Operational Life</td><td>~30 days planned</td><td>4–6 months (years possible)</td></tr>
-      <tr><td>Primary Purpose</td><td>Aerial reconnaissance</td><td>Sample collection &amp; deposit</td></tr>
-      <tr><td>Leg Design</td><td>Fixed</td><td>Foldable for transport</td></tr>
-    </tbody>
-  </table>
-
-  <h2 data-n="06">Conclusion</h2>
-  <div class="callout"><p>"The use of modern materials and propulsion would allow this concept to meet its objectives within a reasonable margin of current technology."</p></div>
-  <p>The architecture could scale into a full Mars Infrastructure System — a network of landers, drones, and orbital platforms enabling continuous unmanned operations before any crewed mission reaches the surface.</p>
-
-  <div class="refs">
-    <h3>Works Cited</h3>
-    <div class="ref">NASA. "Ingenuity Mars Helicopter." NASA Science. science.nasa.gov</div>
-    <div class="ref">NASA. "Mars Fact Sheet." NSSDCA, May 2025. nssdc.gsfc.nasa.gov</div>
-    <div class="ref">NASA. "Mars InSight Lander." NASA Science. science.nasa.gov</div>
-    <div class="ref">SpaceX. "Starship." spacex.com, 2020.</div>
-  </div>
-  <div class="det-footer">
-    <div class="det-footer-left">Team<span>David Reina · Charlie Prophater · Esteban Pederaza · Ian Rodriguez · Kidus Meron</span><span style="margin-top:2px">Advisor: Emmanuel Narteh Aklie</span></div>
-    <a class="btn btn-outline" href="#" onclick="showPage('projects');return false;">← All Projects</a>
-  </div>
+  <p>A conceptual design for the Mars Sample Recovery Lander, purpose-built to collect volcanic dust, rock, and ice. The architecture utilizes 5 distinct stages to manage the long-duration mission.</p>
+  <h2 data-n="01">System Architecture</h2>
+  <div class="scard"><div class="sbadge">S1</div><div><div class="stitle">Lander Core</div><div class="sdesc">Houses sample pods and return electronics.</div></div></div>
+  <div class="scard"><div class="sbadge">S2</div><div><div class="stitle">Ascent Engine</div><div class="sdesc">Provides the thrust needed to exit Martian gravity.</div></div></div>
 </div>
 </script>
 
 <script id="tpl-poe" type="text/x-template">
 <div class="det-hero">
   <div class="back-link" onclick="showPage('projects')">Back to Projects</div>
-  <div class="det-badge">Principles of Engineering</div>
+  <div class="det-badge">Biomedical Design</div>
   <h1 class="det-title">POE Prosthetic Hand</h1>
-  <p class="det-sub">A fully modeled and 3D-printed prosthetic device with articulating fingers — engineered from scratch for smooth movement and reliable grip strength.</p>
-  <div class="meta-row">
-    <div class="mi"><span class="ml">Course</span><span class="mv">Principles of Engineering (POE)</span></div>
-    <div class="mi"><span class="ml">Tools</span><span class="mv">CAD Software · 3D Printer</span></div>
-    <div class="mi"><span class="ml">Domain</span><span class="mv">Biomedical Engineering</span></div>
-  </div>
+  <p class="det-sub">A low-cost, 3D printed solution for upper limb mobility.</p>
 </div>
 <div class="dbody">
-  <h2 data-n="01">Project Overview</h2>
-  <p>In my Principles of Engineering course, I designed and fabricated a <strong>functional prosthetic hand</strong> from scratch — taking the project through the full engineering design cycle: research, concept sketching, CAD modeling, iterative refinement, and physical 3D printing.</p>
-  <div class="callout"><p>The goal wasn't just a hand that looks like a hand — it needed to work like one. Smooth articulation across all fingers, and grip strength sufficient to hold and retain objects securely.</p></div>
-
-  <h2 data-n="02">Design Process</h2>
-  <p>The design began by studying existing prosthetic hand architectures to understand the mechanical constraints of finger articulation. Key design challenges included:</p>
-  <ul>
-    <li>Achieving full finger flexion and extension through a printable joint mechanism</li>
-    <li>Balancing structural rigidity with the flexibility needed for realistic movement</li>
-    <li>Selecting print orientation and material to maximize tensile strength at joint interfaces</li>
-    <li>Minimizing part count while maintaining full mechanical functionality</li>
-  </ul>
-  <p>Multiple CAD iterations were created and evaluated before arriving at the final print-ready model. The finger joints were engineered as a tendon-actuated system, mimicking the mechanical logic of a real human hand.</p>
-
-  <h2 data-n="03">Fabrication &amp; Results</h2>
-  <p>The final model was 3D printed and assembled. The prosthetic achieved its core performance targets: <strong>smooth movement</strong> across all digits and a <strong>firm grip</strong> capable of securely holding objects.</p>
-  <p>This project deepened my understanding of how engineering constraints — print tolerances, material properties, joint geometry — interact in physical fabrication, and how small CAD decisions translate directly into real-world function or failure.</p>
-
-  <h2 data-n="04">Reflection</h2>
-  <p>The POE hand was my first complete end-to-end engineering project: from blank screen in CAD to a physical, functioning device. It established the discipline I bring to every project since — design with the final physical object in mind from the very first sketch.</p>
-
-  <div class="det-footer" style="justify-content:flex-end">
-    <a class="btn btn-outline" href="#" onclick="showPage('projects');return false;">← All Projects</a>
-  </div>
+  <h2 data-n="01">Design Overview</h2>
+  <p>This project focused on the articulation of the fingers. By using 3D printing, we can rapidly iterate designs to improve grip strength and comfort.</p>
 </div>
 </script>
 
 <script id="tpl-rocket" type="text/x-template">
 <div class="det-hero">
   <div class="back-link" onclick="showPage('projects')">Back to Projects</div>
-  <div class="det-badge">Rice Aerospace Academy · 2025</div>
-  <h1 class="det-title">Water Pressure Rocket &amp; Budget Lab</h1>
-  <p class="det-sub">A design-and-build competition where budget constraints were as much the engineering challenge as aerodynamics — building under economic pressure.</p>
-  <div class="meta-row">
-    <div class="mi"><span class="ml">Program</span><span class="mv">Rice Aerospace Academy</span></div>
-    <div class="mi"><span class="ml">Type</span><span class="mv">Lab / Competition</span></div>
-    <div class="mi"><span class="ml">Focus</span><span class="mv">Budget Engineering · Aerospace</span></div>
-  </div>
+  <div class="det-badge">Aerodynamics</div>
+  <h1 class="det-title">Water Pressure Rocket</h1>
+  <p class="det-sub">Optimizing performance within strict budget constraints.</p>
 </div>
 <div class="dbody">
-  <h2 data-n="01">Project Overview</h2>
-  <p>This lab at Rice Aerospace Academy introduced a critical real-world engineering dimension that student projects often ignore: <strong>economic constraints</strong>. Students were given a simulated budget and an economic system to acquire materials — every component had a cost, and every design decision had a financial consequence.</p>
-  <div class="callout"><p>Build an aircraft that performs as well as possible within a fixed budget. Spend too much on materials and you run out. Skimp on structure and it fails on launch.</p></div>
-
-  <h2 data-n="02">Budget System &amp; Documentation</h2>
-  <p>The economic system required teams to document all expenditures, calculate running totals, and remain within their allocated budget throughout the build. This meant:</p>
-  <ul>
-    <li>Trade-off analysis between higher-performance and lower-cost materials</li>
-    <li>Prioritization decisions — which components justify higher spend</li>
-    <li>Real-time budget tracking and documentation throughout the lab</li>
-    <li>Redesigning sections mid-build when original material choices exceeded budget</li>
-  </ul>
-
-  <h2 data-n="03">Design &amp; Construction</h2>
-  <p>The water pressure rocket was designed for maximum altitude and stability. Key engineering considerations included fin geometry for directional stability, nose cone aerodynamics, and pressure vessel integrity for the water propulsion chamber. All design choices were filtered through the budget constraint — creating an authentic engineering trade-off environment that mirrors real aerospace procurement challenges.</p>
-
-  <h2 data-n="04">Outcome &amp; Lessons</h2>
-  <p>The lab demonstrated that <strong>engineering is never just a technical problem</strong> — it's always also an economic one. The best-performing rockets were those whose teams made the best decisions under constraint. That lesson shapes how I approach every project I take on.</p>
-
-  <div class="det-footer" style="justify-content:flex-end">
-    <a class="btn btn-outline" href="#" onclick="showPage('projects');return false;">← All Projects</a>
-  </div>
-</div>
-</script>
-
-<script id="tpl-balsa" type="text/x-template">
-<div class="det-hero">
-  <div class="back-link" onclick="showPage('projects')">Back to Projects</div>
-  <div class="det-badge">Aerospace Fabrication</div>
-  <h1 class="det-title">Aerospace Balsa Wood Plane</h1>
-  <p class="det-sub">Simulation-informed design meets precision hand fabrication — building a flying aircraft from calculated aerodynamic parameters.</p>
-  <div class="meta-row">
-    <div class="mi"><span class="ml">Tools</span><span class="mv">Plane Maker / Simulator</span></div>
-    <div class="mi"><span class="ml">Material</span><span class="mv">Balsa Wood</span></div>
-    <div class="mi"><span class="ml">Focus</span><span class="mv">Aerodynamics · Precision Fabrication</span></div>
-  </div>
-</div>
-<div class="dbody">
-  <h2 data-n="01">Project Overview</h2>
-  <p>This project combined computational simulation with physical fabrication: use <strong>plane-maker software</strong> to calculate the ideal scale, wing shape, and weight distribution for a flying aircraft — then build it by hand from balsa wood to those exact specifications.</p>
-  <div class="callout"><p>The simulation isn't just a planning tool — it's the engineering blueprint. Every measurement cut into the balsa wood is a direct output of the aerodynamic model.</p></div>
-
-  <h2 data-n="02">Simulation &amp; Parameter Calculation</h2>
-  <p>Using the plane-maker simulator, I analyzed key aerodynamic variables governing flight performance:</p>
-  <ul>
-    <li><strong>Wing aspect ratio</strong> — optimizing lift-to-drag for glide performance</li>
-    <li><strong>Center of gravity vs. center of lift</strong> — ensuring a stable flight envelope</li>
-    <li><strong>Fuselage length and mass distribution</strong> — balancing pitch stability</li>
-    <li><strong>Control surface sizing</strong> — calculating effective elevator and rudder areas</li>
-  </ul>
-  <p>Simulation output defined the exact dimensions — span, chord, fuselage length, and component weights — that the physical build had to match.</p>
-
-  <h2 data-n="03">Fabrication</h2>
-  <p>Balsa wood was cut, shaped, and assembled to the simulation-derived measurements. Precision was critical — small deviations in wing geometry or weight distribution shift the center of gravity and degrade flight stability. The build demanded both fine cutting technique and continuous weight verification throughout assembly.</p>
-
-  <h2 data-n="04">Outcome</h2>
-  <p>The completed aircraft matched the simulation parameters and demonstrated the core lesson: <strong>simulation is only as good as the build it informs</strong>. Executing the physical artifact to spec — with real materials and real tolerances — is its own engineering discipline entirely.</p>
-
-  <div class="det-footer" style="justify-content:flex-end">
-    <a class="btn btn-outline" href="#" onclick="showPage('projects');return false;">← All Projects</a>
-  </div>
-</div>
-</script>
-
-<script id="tpl-shanghai" type="text/x-template">
-<div class="det-hero">
-  <div class="back-link" onclick="showPage('projects')">Back to Projects</div>
-  <div class="det-badge">International · Shanghai · 🇭🇳 Honduras</div>
-  <h1 class="det-title">Shanghai Sustainable City Model for Honduras</h1>
-  <p class="det-sub">Representing Honduras at an international design camp — collaborating with students from 10+ countries to engineer a sustainable urban future.</p>
-  <div class="meta-row">
-    <div class="mi"><span class="ml">Location</span><span class="mv">Shanghai, China</span></div>
-    <div class="mi"><span class="ml">Countries</span><span class="mv">10+ Participating Nations</span></div>
-    <div class="mi"><span class="ml">Representing</span><span class="mv">Honduras 🇭🇳</span></div>
-    <div class="mi"><span class="ml">Focus</span><span class="mv">Sustainable Development</span></div>
-  </div>
-</div>
-<div class="dbody">
-  <h2 data-n="01">Project Overview</h2>
-  <p>This international camp brought together high school students from over 10 countries for cultural exchange and collaborative sustainable development. As a representative of <strong>Honduras</strong>, I worked with a 5-person multinational team to design and build a <strong>sustainable city model</strong> tailored to Honduras's specific geographic, economic, and environmental context.</p>
-  <div class="callout"><p>Engineering a city for Honduras meant understanding Honduras — its geography, energy access challenges, transportation gaps, and the communities that would actually live in this urban vision.</p></div>
-
-  <h2 data-n="02">Design Principles</h2>
-  <p>The city model was built around two core pillars of sustainable development:</p>
-  <ul>
-    <li><strong>Renewable energy integration</strong> — solar, wind, and micro-hydro systems appropriate for Honduras's geography</li>
-    <li><strong>Cleaner transportation</strong> — reduced vehicle dependency through walkable design, electric transit corridors, and cycling infrastructure</li>
-    <li><strong>Green space and urban biodiversity</strong> — ecological corridors preserved within the urban fabric</li>
-    <li><strong>Water management</strong> — sustainable collection and distribution suited to tropical climate patterns</li>
-  </ul>
-
-  <h2 data-n="03">Collaboration &amp; Cultural Exchange</h2>
-  <p>Working with students from 10+ countries meant that the design process itself was a lesson in cross-cultural engineering communication. Each group brought different assumptions about what a city needs, different aesthetic sensibilities, and different definitions of "sustainable." Navigating those differences — while representing Honduras's specific needs — was as challenging and rewarding as the technical design work.</p>
-  <p>The camp reinforced that the most important engineering problems — energy, water, urban mobility, climate resilience — are <strong>global problems that demand global thinking</strong>.</p>
-
-  <h2 data-n="04">Outcome &amp; Significance</h2>
-  <p>The completed model presented a cohesive vision for a sustainable Honduran city, grounded in the country's real constraints and opportunities. For me personally, the project reinforced that engineering is most meaningful when it's applied to the places and communities you care about. Honduras shaped who I am as an engineer. This project let me give something back.</p>
-
-  <div class="det-footer" style="justify-content:flex-end">
-    <a class="btn btn-outline" href="#" onclick="showPage('projects');return false;">← All Projects</a>
-  </div>
+  <h2 data-n="01">The Challenge</h2>
+  <p>The project simulated a real engineering environment where every part—the nose cone, the fins, the pressure vessel—had a financial cost.</p>
 </div>
 </script>
 
 <script>
   const cursor = document.getElementById('cursor');
-  document.addEventListener('mousemove', e => {
+  document.addEventListener('mousemove', (e) => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   });
-  function bindCursor() {
-    document.querySelectorAll('a, button, .pcard, .scard, .back-link').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-    });
-  }
-  bindCursor();
 
-  function showPage(id) {
+  document.querySelectorAll('a, .btn, .pcard, .back-link').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+  });
+
+  function showPage(pageId) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById('page-' + pageId);
+    if(target) target.classList.add('active');
+
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-    const pg = document.getElementById('page-' + id);
-    if (pg) pg.classList.add('active');
-    const map = { cover:'nav-cover', about:'nav-about', projects:'nav-projects', 'project-detail':'nav-projects' };
-    const nav = document.getElementById(map[id]);
-    if (nav) nav.classList.add('active');
+    const navLink = document.getElementById('nav-' + pageId);
+    if(navLink) navLink.classList.add('active');
+    
     window.scrollTo(0, 0);
   }
 
-  function showDetail(key) {
-    const tpl = document.getElementById('tpl-' + key);
-    if (!tpl) return;
-    document.getElementById('det-content').innerHTML = tpl.textContent || tpl.innerHTML;
-    showPage('project-detail');
-    bindCursor();
+  function showDetail(projectId) {
+    const template = document.getElementById('tpl-' + projectId);
+    const detailContent = document.getElementById('det-content');
+    if(template) {
+      detailContent.innerHTML = template.innerHTML;
+      showPage('project-detail');
+    }
   }
 
-  document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+  // Handle the "Home" logo click
+  document.querySelector('.nav-logo').addEventListener('click', () => showPage('cover'));
 </script>
 </body>
 </html>
